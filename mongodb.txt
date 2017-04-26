@@ -1,0 +1,110 @@
+//mongo shell abiarazi
+mongo
+
+//sortu eta aldatu gure DBra
+use frogaapp
+
+//DBan erabiltzailea sortu
+db.createUser({
+	user: "erab",
+	pwd: "erab",
+	roles: ["readWrite", "dbAdmin"]
+});
+
+//erabiltzaileak kolekzioan datuak sartzeko dokumento modeloa
+{
+	_id: 0,
+	izena: "",
+	abizena: "",
+	postaElektronikoa: "",
+	pasahitza: "",
+	gogokoDitu: [],
+	bozkatuDitu: []
+}
+/*
+
+*/
+
+//pelikulak kolekzioan datuak sartzeko dokumento modeloa
+{
+	_id: 0,
+	izena: "",
+	deskribapena: "",
+	gogokoak: [],
+	bozkak: []
+}
+
+//erabiltzaile kolekzioa sortu
+db.createCollection("erabiltzaileak")
+
+//erabiltzaileak kolekziora sarrera lortu kolekzioa aldagai batean gordez
+var erab = db.getCollection("erabiltzaileak")
+
+//erabiltzaile bi dokumentu sartu kolekzioan
+erab.insertOne({
+	_id: 1,
+	izena: "juan", 
+	abizena: "egaña", 
+	postaElektronikoa: "juanega22@gmail.com", 
+	pasahitza: "juanegaña",
+	gogokoDitu: [],
+	bozkatuDitu: []
+})
+erab.insertOne({
+	_id: 2,
+	izena: "ane",
+	abizena: "san bizente",
+	postaElektronikoa: "anesb@gmail.com",
+	pasahitza: "anesanbizente",
+	gogokoDitu: [],
+	bozkatuDitu: []
+})
+
+//kolekzioko dokumentuen erabiltzaileak lortu
+db.erabiltzaileak.find()
+//edo
+erab.find()
+
+//modu politan inprimatzeko
+db.erabiltzaileak.find().pretty()
+//edo
+erab.find().pretty()
+
+//filmekin berdina egin eta pelikula batzuk sartu
+var film = db.getCollection("filmak")
+film.insertOne({
+	_id: 1,
+	izena: "El Cuchitril de Joe (1996)",
+	deskribapena: "Un joven de Iowa llega a Nueva York con la idea de vivir una agradable experiencia. Pronto descubre lo insegura y difícil que es la vida en la gran manzana. Pero la suerte le llega cuando descubre un pequeño apartamento de renta antigua gracias a las cucarachas que en éste viven. Los insectos se convertirán en sus mejores aliados...",
+	gogokoak: [],
+	bozkak: []
+})
+film.insertOne({
+	_id: 2,
+	izena: "Pequeños Salvajes (2006)",
+	deskribapena: "Roy Eberhardt siempre ha sido el chico nuevo, cambiando de lugar de un lado para otro. Pero al llegar a Florida descubrirá, además de una serie de personajes bastante peculiares, a un grupo de personas que intenta terminar con los búhos del lugar. Y cómo no, junto a sus nuevos amigos, tratarán de impedírselo. ",
+	gogokoak: [],
+	bozkak: []
+})
+film.find().pretty()
+
+//anek 'el cuchitril de joe' filma du gustoko
+erab.update({_id:2},{$addToSet:{gogokoDitu:1}})
+film.update({_id:1},{$addToSet:{gogokoak:2}})
+erab.find().pretty()
+film.find().pretty()
+
+//ezabatu gustoko pelikula
+erab.update({_id:2},{$pull:{gogokoDitu:1}})
+film.update({_id:1},{$pull:{gogokoak:2}})
+erab.find().pretty()
+film.find().pretty()
+
+//inprimatu erabiltzaile batek gustoko dituen pelikulen izenak
+erab.find().forEach(function(erabDoc){
+	print("Erabiltzaile izena: "+erabDoc.izena+" "+erabDoc.abizena);
+	erabDoc.gogokoDitu.forEach(function(current_value){
+		print(current_value)
+	});
+	print();
+});
