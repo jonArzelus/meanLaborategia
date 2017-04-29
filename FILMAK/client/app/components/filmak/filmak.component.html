@@ -1,0 +1,20 @@
+<form class="well" (submit)="addFilma($event)">
+	<div class="form-group">
+		<input type="text" [(ngModel)]="izena" name="izena" class="form-control" placeholder="Filma izena gehitu...">
+		<textarea type="textarea" [(ngModel)]="deskribapena" name="deskribapena" class="form-control" placeholder="Filma deskribapena gehitu..."></textarea>
+	</div>
+</form>
+
+<div class="filma-list">
+	<div *ngFor="let filma of filmak">
+		<div class="col-md-3">
+			{{filma.izena}}
+		</div>
+		<div class="col-md-6">
+			{{filma.deskribapena}}
+		</div>
+		<div class="col-md-3">
+			<input type="button" value="Ezabatu" class="btn btn-danger">
+		</div>
+	</div>
+</div>
