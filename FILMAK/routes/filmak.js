@@ -28,7 +28,7 @@ router.get('/filma/:izena', function(req, res, next){
 //Filma bat gorde DBan
 router.post('/filma', function(req, res, next){
 	var filma = req.body;
-	if(!filma.izena || filma.deskribapena) {
+	if(!filma.izena || !filma.deskribapena) {
 		res.status(400);
 		res.json({
 			"error": "Bad data"
@@ -63,18 +63,31 @@ router.put('/filma/:izena', function(req, res, next){
 	if(filma.deskribapena) {
 		updFilma.deskribapena = filma.deskribapena;
 	}
+	updFilma.gogokoak=filma.gogokoak;
+	updFilma.bozkak=filma.bozkak;
 	if(!updFilma) {
 		res.status(400);
 		res.json({
 			"error": "Bad data"
 		});
 	} else {
-		db.filmak.update({izena:req.params.izena}, updFilma, {}, function(err, filma){
+		db.filmak.remove({izena:req.params.izena}, function(err, filma){
+			if(err){
+				res.send(err);
+			}
+		});
+		db.filmak.save(filma, function(err, filma){
+			if(err){
+				es.send(err);
+			}
+			res.json(filma);
+		});
+		/*db.filmak.update({izena:req.params.izena}, updFilma, {}, function(err, filma){
 		if(err){
 			res.send(err);
 		}
 		res.json(filma);
-		});
+		});*/
 	}
 	/*db.filmak.remove({izena:req.params.izena}, function(err, filma){
 		if(err){

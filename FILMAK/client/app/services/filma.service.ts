@@ -14,21 +14,22 @@ export class FilmakService{
     }
     
     addFilma(newFilma){
+        console.log(newFilma);
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('/api/task', JSON.stringify(newTask), {headers: headers})
+        return this.http.post('/filma', JSON.stringify(newFilma), {headers: headers})
             .map(res => res.json());
     }
     
     deleteFilma(izena){
-        return this.http.delete('/api/task/'+id)
+        return this.http.delete('/filma/'+izena)
             .map(res => res.json());
     }
     
     updateFilma(filma){
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.put('/api/task/'+task._id, JSON.stringify(task), {headers: headers})
+        return this.http.put('/filma/'+filma.izena, JSON.stringify(filma), {headers: headers})
             .map(res => res.json());
     }
 }

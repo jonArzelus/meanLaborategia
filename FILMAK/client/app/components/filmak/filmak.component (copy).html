@@ -1,0 +1,37 @@
+<form class="well" (submit)="addFilma($event)">
+	<div class="form-group">
+		<input type="text" [(ngModel)]="izena" name="izena" class="form-control" placeholder="Filma izena gehitu..."><br>
+		<textarea type="textarea" [(ngModel)]="deskribapena" name="deskribapena" class="form-control" placeholder="Filma deskribapena gehitu..."></textarea><br>
+		<input type="submit" class="btn btn-success form control" value="Filma berria gorde">
+	</div>
+</form>
+
+<script>
+function eguneratu(x) {
+	var idx = x.id.substr(0, x.id.indexOf('b'));
+	idxt=idx+"title";
+	document.getElementById(idxt).style.display=none;
+	document.getElementById(idx+"title1").style.display=all;
+	document.getElementById(idx+"desc").style.display=none;
+	document.getElementById(idx+"desc1").style.display=all;
+}
+</script>
+
+<div class="filma-list">
+	<div *ngFor="let filma of filmak" class="jumbotron">
+		<div class="col-md-3" id="{{filma._id}}title">
+			<h3>{{filma.izena}}</h3>
+			<input id="{{filma._id}}title1" type="text" value="{{filma.izena}}" style="display:none">
+		</div><br>
+		<div class="col-md-6 text-justify" id="{{filma._id}}desc">
+			{{filma.deskribapena}}
+			<textarea id="{{filma._id}}desc1" type="textarea" style="display:none">{{filma.deskribapena}}</textarea>
+		</div><br>
+		<div class="col-md-3">
+			<input type="button" (click)="deleteFilma(filma.izena)" value="Ezabatu" class="btn btn-danger">
+			<input type="button" id="{{filma._id}}b" value="Eguneratu" onclick="eguneratu(this)" class="btn btn-info">
+			<input type="button" id="{{filma._id}}c" value="Utzi" class="btn btn-warning">
+			<input type="button" id="{{filma._id}}d" value="Gorde" class="btn btn-success">
+		</div>
+	</div><br>
+</div>

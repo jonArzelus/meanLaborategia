@@ -20,6 +20,68 @@ var FilmakComponent = (function () {
             _this.filmak = filmak;
         });
     }
+    FilmakComponent.prototype.addFilma = function (event) {
+        var _this = this;
+        event.preventDefault();
+        console.log(this.izena);
+        var newFilma = {
+            izena: this.izena,
+            deskribapena: this.deskribapena,
+            gogokoak: [],
+            bozkak: []
+        };
+        this.filmakService.addFilma(newFilma)
+            .subscribe(function (filma) {
+            _this.filmak.push(filma);
+            _this.izena = '';
+            _this.deskribapena = '';
+        });
+    };
+    FilmakComponent.prototype.deleteFilma = function (izena) {
+        var filmak = this.filmak;
+        console.log("ezabatzen " + this.izena);
+        this.filmakService.deleteFilma(izena)
+            .subscribe(function (data) {
+            if (data.n == 1) {
+                for (var i = 0; i < filmak.length; i++)
+                    if (filmak[i].izena == izena) {
+                        filmak.splice(i, 1);
+                    }
+            }
+        });
+    };
+    FilmakComponent.prototype.updateFilmaIzena = function (filma, dataizena) {
+        if (filma.izena != dataizena) {
+            console.log(filma.izena + " " + dataizena);
+            var newFilma = {
+                _id: filma._id,
+                izena: dataizena,
+                deskribapena: filma.deskribapena,
+                gogokoak: filma.gogokoak,
+                bozkak: filma.bozkak
+            };
+            this.filmakService.updateFilma(newFilma)
+                .subscribe(function (data) {
+                filma.izena = newFilma.izena;
+            });
+        }
+    };
+    FilmakComponent.prototype.updateFilmaDesk = function (filma, datadesk) {
+        if (filma.deskribapena != datadesk) {
+            console.log(filma.deskribapena + " " + datadesk);
+            var newFilma = {
+                _id: filma._id,
+                izena: filma.izena,
+                deskribapena: datadesk,
+                gogokoak: filma.gogokoak,
+                bozkak: filma.bozkak
+            };
+            this.filmakService.updateFilma(newFilma)
+                .subscribe(function (data) {
+                filma.deskribapena = newFilma.deskribapena;
+            });
+        }
+    };
     return FilmakComponent;
 }());
 FilmakComponent = __decorate([

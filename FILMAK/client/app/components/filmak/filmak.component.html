@@ -1,20 +1,23 @@
 <form class="well" (submit)="addFilma($event)">
 	<div class="form-group">
-		<input type="text" [(ngModel)]="izena" name="izena" class="form-control" placeholder="Filma izena gehitu...">
-		<textarea type="textarea" [(ngModel)]="deskribapena" name="deskribapena" class="form-control" placeholder="Filma deskribapena gehitu..."></textarea>
+	<h3>Filma berri bat gehitu</h3>
+		<input type="text" [(ngModel)]="izena" name="izena" class="form-control" placeholder="Filma izena gehitu..."><br>
+		<textarea type="textarea" [(ngModel)]="deskribapena" name="deskribapena" class="form-control" placeholder="Filma deskribapena gehitu..."></textarea><br>
+		<input type="submit" class="btn btn-success form control" value="Filma berria gorde">
 	</div>
 </form>
 
 <div class="filma-list">
-	<div *ngFor="let filma of filmak">
+	<div *ngFor="let filma of filmak" class="jumbotron">
 		<div class="col-md-3">
-			{{filma.izena}}
-		</div>
-		<div class="col-md-6">
-			{{filma.deskribapena}}
-		</div>
+			<input class="form-control input-lg" type="text" value="{{filma.izena}}" (change)="updateFilmaIzena(filma, $event.target.value)">
+		</div><br>
+		<div class="col-md-6 text-justify">
+			<textarea type="textarea" class="form-control" rows="6" (change)="updateFilmaDesk(filma, $event.target.value)">{{filma.deskribapena}}</textarea>
+		</div><br>
 		<div class="col-md-3">
-			<input type="button" value="Ezabatu" class="btn btn-danger">
+			<input type="button" (click)="deleteFilma(filma.izena)" value="Ezabatu" class="btn btn-danger">
+			<!--<input type="button" value="Aldaketak gorde" class="btn btn-success">-->
 		</div>
-	</div>
+	</div><br>
 </div>
