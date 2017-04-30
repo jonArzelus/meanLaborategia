@@ -3,7 +3,7 @@ var router = express.Router();
 var mongojs = require('mongojs');
 var db = mongojs('filmakdb', ['erabiltzaileak']);
 
-router.get('/erabiltzaileak', function(req, res, next){
+router.get('api/erabiltzaileak', function(req, res, next){
 	//res.render('erabiltzaileak.html');
 	db.erabiltzaileak.find(function(err, erabiltzaileak){
 		if(err) {

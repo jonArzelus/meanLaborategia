@@ -4,7 +4,7 @@ var mongojs = require('mongojs');
 var db = mongojs('filmakdb', ['filmak']);
 
 //Filma guztiak lortzeko
-router.get('/filmak', function(req, res, next){
+router.get('/api/filmak', function(req, res, next){
 	//res.render('filmak.html');
 	db.filmak.find(function(err, filmak){
 		if(err) {
@@ -15,7 +15,7 @@ router.get('/filmak', function(req, res, next){
 });
 
 //Filma zehatz bat lortzeko
-router.get('/filma/:izena', function(req, res, next){
+router.get('/api/filma/:izena', function(req, res, next){
 	//res.render('filmak.html');
 	db.filmak.findOne({izena: req.params.izena}, function(err, filma){
 		if(err) {
@@ -26,7 +26,7 @@ router.get('/filma/:izena', function(req, res, next){
 });
 
 //Filma bat gorde DBan
-router.post('/filma', function(req, res, next){
+router.post('/api/filma', function(req, res, next){
 	var filma = req.body;
 	if(!filma.izena || !filma.deskribapena) {
 		res.status(400);
@@ -44,7 +44,7 @@ router.post('/filma', function(req, res, next){
 });
 
 //Filma bat ezabatu DBtik
-router.delete('/filma/:izena', function(req, res, next){
+router.delete('/api/filma/:izena', function(req, res, next){
 	db.filmak.remove({izena:req.params.izena}, function(err, filma){
 		if(err){
 			res.send(err);
@@ -54,7 +54,7 @@ router.delete('/filma/:izena', function(req, res, next){
 });
 
 //Filma bat eguneratu
-router.put('/filma/:izena', function(req, res, next){
+router.put('/api/filma/:izena', function(req, res, next){
 	var filma = req.body;
 	var updFilma = {};
 	if(filma.izena) {

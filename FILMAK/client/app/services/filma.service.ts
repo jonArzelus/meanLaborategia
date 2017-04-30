@@ -9,7 +9,7 @@ export class FilmakService{
     }
     
     getFilmak(){
-        return this.http.get('/filmak')
+        return this.http.get('/api/filmak')
             .map(res => res.json());
     }
     
@@ -17,19 +17,19 @@ export class FilmakService{
         console.log(newFilma);
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('/filma', JSON.stringify(newFilma), {headers: headers})
+        return this.http.post('/api/filma', JSON.stringify(newFilma), {headers: headers})
             .map(res => res.json());
     }
     
     deleteFilma(izena){
-        return this.http.delete('/filma/'+izena)
+        return this.http.delete('/api/filma/'+izena)
             .map(res => res.json());
     }
     
     updateFilma(filma){
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.put('/filma/'+filma.izena, JSON.stringify(filma), {headers: headers})
+        return this.http.put('/api/filma/'+filma.izena, JSON.stringify(filma), {headers: headers})
             .map(res => res.json());
     }
 }
