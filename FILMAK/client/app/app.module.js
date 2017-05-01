@@ -12,6 +12,7 @@ var http_1 = require("@angular/http");
 var forms_1 = require("@angular/forms");
 var app_component_1 = require("./app.component");
 var filmak_component_1 = require("./components/filmak/filmak.component");
+var erabiltzaileak_component_1 = require("./components/erabiltzaileak/erabiltzaileak.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -20,7 +21,7 @@ var AppModule = (function () {
 AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, http_1.HttpModule, forms_1.FormsModule],
-        declarations: [app_component_1.AppComponent, filmak_component_1.FilmakComponent],
+        declarations: [app_component_1.AppComponent, filmak_component_1.FilmakComponent, erabiltzaileak_component_1.ErabiltzaileakComponent],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

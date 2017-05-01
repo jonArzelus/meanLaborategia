@@ -18,6 +18,7 @@ db.createUser({
 	abizena: "",
 	postaElektronikoa: "",
 	pasahitza: "",
+	rol: "",
 	gogokoDitu: [],
 	bozkatuDitu: []
 }
@@ -47,6 +48,7 @@ erab.insertOne({
 	abizena: "egaña", 
 	postaElektronikoa: "juanega22@gmail.com", 
 	pasahitza: "juanegaña",
+	rol: "user",	
 	gogokoDitu: [],
 	bozkatuDitu: []
 })
@@ -56,6 +58,7 @@ erab.insertOne({
 	abizena: "san bizente",
 	postaElektronikoa: "anesb@gmail.com",
 	pasahitza: "anesanbizente",
+	rol: "user",
 	gogokoDitu: [],
 	bozkatuDitu: []
 })
@@ -115,34 +118,59 @@ db.createCollection("erabiltzaileak");
 var film = db.getCollection("filmak");
 var erab = db.getCollection("erabiltzaileak");
 erab.insertOne({
-	_id: 1,
 	izena: "juan", 
 	abizena: "egaña", 
 	postaElektronikoa: "juanega22@gmail.com", 
 	pasahitza: "juanegaña",
+	rol: "user",
 	gogokoDitu: [],
 	bozkatuDitu: []
 });
 erab.insertOne({
-	_id: 2,
 	izena: "ane",
 	abizena: "san bizente",
 	postaElektronikoa: "anesb@gmail.com",
 	pasahitza: "anesanbizente",
+	rol: "user",
+	gogokoDitu: [],
+	bozkatuDitu: []
+});
+erab.insertOne({
+	izena: "admin",
+	abizena: "admin",
+	postaElektronikoa: "admin@admin.com",
+	pasahitza: "admin",
+	rol: "admin",
 	gogokoDitu: [],
 	bozkatuDitu: []
 });
 film.insertOne({
-	_id: 1,
 	izena: "El Cuchitril de Joe (1996)",
 	deskribapena: "Un joven de Iowa llega a Nueva York con la idea de vivir una agradable experiencia. Pronto descubre lo insegura y difícil que es la vida en la gran manzana. Pero la suerte le llega cuando descubre un pequeño apartamento de renta antigua gracias a las cucarachas que en éste viven. Los insectos se convertirán en sus mejores aliados...",
 	gogokoak: [],
 	bozkak: []
 });
 film.insertOne({
-	_id: 2,
 	izena: "Pequeños Salvajes (2006)",
 	deskribapena: "Roy Eberhardt siempre ha sido el chico nuevo, cambiando de lugar de un lado para otro. Pero al llegar a Florida descubrirá, además de una serie de personajes bastante peculiares, a un grupo de personas que intenta terminar con los búhos del lugar. Y cómo no, junto a sus nuevos amigos, tratarán de impedírselo. ",
+	gogokoak: [],
+	bozkak: []
+});
+film.insertOne({
+	izena: "Mar Adentro (2004)",
+	deskribapena: "Ramón (Javier Bardem) lleva casi treinta años postrado en una cama al cuidado de su familia. Su única ventana al mundo es la de su habitación, que da al mar, donde sufrió el accidente que interrumpió su juventud. Desde entonces, su único deseo es morir dignamente. En su vida ejercen una gran influencia dos mujeres: Julia (Belén Rueda), una abogada que apoya su causa, y Rosa (Lola Dueñas), una vecina que intenta convencerlo de que vivir merece la pena. Pero también ellas, cautivadas por la luminosa personalidad de Ramón, se replantearán los principios que rigen sus vidas. Él sabe que sólo quien de verdad le ame le ayudará a emprender el último viaje. ",
+	gogokoak: [],
+	bozkak: []
+});
+film.insertOne({
+	izena: "El Dictador (2012)",
+	deskribapena: "El Almirante Haffaz Aladeen (Baron Cohen), un dictador antioccidental, arriesga su vida con tal de evitar el establecimiento de la democracia en Wadiya, un país norteafricano con recursos petrolíferos. Su más fiel consejero es su tío Tamir (Ben Kingsley), Jefe de la Policía Secreta, Jefe de Seguridad y Proveedor de Mujeres. Por desgracia para Aladeen y sus consejeros, Occidente ha empezado a inmiscuirse en los asuntos de Wadiya, país que ha sido sancionado varias veces por las Naciones Unidas en la última década. Tras sufrir un atentado que le cuesta la vida a uno de sus consejeros, Tamir convence a Aladeen para que vaya a Nueva York a solucionar la cuestión en la ONU.",
+	gogokoak: [],
+	bozkak: []
+});
+film.insertOne({
+	izena: "Battleship (2012)",
+	deskribapena: "Libre adaptación cinematográfica del popular juego de mesa de Hasbro conocido como “Hundir la flota” o ”Batalla naval”. En este caso la batalla será entre la flota de los Estados Unidos y una flota alienígena. Épica aventura que transcurre por mar, cielo y tierra, en la que nuestro planeta lucha por sobrevivir contra una fuerza muy superior. El teniente Hopper (Taylor Kitsch) es un oficial de la Marina destinado al John Paul Jones. Sam Shane (Brooklyn Decker) es una fisioterapeuta de la armada y también la novia de Hopper. Stone (Skarsgard) es el hermano mayor de Hopper y comandante del Samson. La suboficial Raikes (Rihanna) es la especialista en armas del John Paul Jones. Stone y Hopper están a las órdenes del Almirante Shane (Liam Neeson), que es el padre de Sam.",
 	gogokoak: [],
 	bozkak: []
 });

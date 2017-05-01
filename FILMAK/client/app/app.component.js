@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var filma_service_1 = require("./services/filma.service");
+var erabiltzailea_service_1 = require("./services/erabiltzailea.service");
 var AppComponent = (function () {
     function AppComponent() {
     }
@@ -18,7 +19,7 @@ AppComponent = __decorate([
         moduleId: module.id,
         selector: 'my-app',
         templateUrl: 'app.component.html',
-        providers: [filma_service_1.FilmakService]
+        providers: [filma_service_1.FilmakService, erabiltzailea_service_1.ErabiltzaileakService]
     })
 ], AppComponent);
 exports.AppComponent = AppComponent;
