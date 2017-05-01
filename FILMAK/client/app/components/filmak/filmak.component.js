@@ -37,14 +37,14 @@ var FilmakComponent = (function () {
             _this.deskribapena = '';
         });
     };
-    FilmakComponent.prototype.deleteFilma = function (izena) {
+    FilmakComponent.prototype.deleteFilma = function (id) {
         var filmak = this.filmak;
-        console.log("ezabatzen " + this.izena);
-        this.filmakService.deleteFilma(izena)
+        console.log("ezabatzen " + id);
+        this.filmakService.deleteFilma(id)
             .subscribe(function (data) {
             if (data.n == 1) {
                 for (var i = 0; i < filmak.length; i++)
-                    if (filmak[i].izena == izena) {
+                    if (filmak[i]._id == id) {
                         filmak.splice(i, 1);
                     }
             }
@@ -78,6 +78,27 @@ var FilmakComponent = (function () {
             };
             this.filmakService.updateFilma(newFilma)
                 .subscribe(function (data) {
+                filma.deskribapena = newFilma.deskribapena;
+            });
+        }
+    };
+    FilmakComponent.prototype.updateFilma = function (filma, dataizen, datadesk) {
+        if (filma.izena != dataizen || filma.deskribapena != datadesk) {
+            console.log(filma.izena + " eguneratzen...");
+            var newFilma = {
+                _id: filma._id,
+                gogokoak: filma.gogokoak,
+                bozkak: filma.bozkak
+            };
+            if (filma.izena != dataizen) {
+                newFilma.izena = dataizen;
+            }
+            if (filma.deskribapena != datadesk) {
+                newFilma.deskribapena = datadesk;
+            }
+            this.filmakService.updateFilma(newFilma)
+                .subscribe(function (data) {
+                filma.izena = newFilma.izena;
                 filma.deskribapena = newFilma.deskribapena;
             });
         }

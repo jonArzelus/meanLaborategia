@@ -21,15 +21,15 @@ export class FilmakService{
             .map(res => res.json());
     }
     
-    deleteFilma(izena){
-        return this.http.delete('/api/filma/'+izena)
+    deleteFilma(id){
+        return this.http.delete('/api/filma/'+id)
             .map(res => res.json());
     }
     
     updateFilma(filma){
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.put('/api/filma/'+filma.izena, JSON.stringify(filma), {headers: headers})
+        return this.http.put('/api/filma/'+filma._id, JSON.stringify(filma), {headers: headers})
             .map(res => res.json());
     }
 }

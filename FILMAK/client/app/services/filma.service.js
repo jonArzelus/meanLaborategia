@@ -28,14 +28,14 @@ var FilmakService = (function () {
         return this.http.post('/api/filma', JSON.stringify(newFilma), { headers: headers })
             .map(function (res) { return res.json(); });
     };
-    FilmakService.prototype.deleteFilma = function (izena) {
-        return this.http.delete('/api/filma/' + izena)
+    FilmakService.prototype.deleteFilma = function (id) {
+        return this.http.delete('/api/filma/' + id)
             .map(function (res) { return res.json(); });
     };
     FilmakService.prototype.updateFilma = function (filma) {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.put('/api/filma/' + filma.izena, JSON.stringify(filma), { headers: headers })
+        return this.http.put('/api/filma/' + filma._id, JSON.stringify(filma), { headers: headers })
             .map(function (res) { return res.json(); });
     };
     return FilmakService;

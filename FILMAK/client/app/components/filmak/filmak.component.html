@@ -9,15 +9,11 @@
 
 <div class="filma-list">
 	<div *ngFor="let filma of filmak" class="jumbotron">
-		<div class="col-md-3">
-			<input class="form-control input-lg" type="text" value="{{filma.izena}}" (change)="updateFilmaIzena(filma, $event.target.value)">
-		</div><br>
-		<div class="col-md-6 text-justify">
-			<textarea type="textarea" class="form-control" rows="6" (change)="updateFilmaDesk(filma, $event.target.value)">{{filma.deskribapena}}</textarea>
-		</div><br>
-		<div class="col-md-3">
-			<input type="button" (click)="deleteFilma(filma.izena)" value="Ezabatu" class="btn btn-danger">
-			<!--<input type="button" value="Aldaketak gorde" class="btn btn-success">-->
-		</div>
+			<!--<input class="form-control input-lg" type="text" value="{{filma.izena}}" (change)="updateFilmaIzena(filma, $event.target.value)">-->
+			<input class="form-control input-lg" type="text" value="{{filma.izena}}"><br>
+			<!--<textarea type="textarea" class="form-control" rows="6" (change)="updateFilmaDesk(filma, $event.target.value)">{{filma.deskribapena}}</textarea>-->
+			<textarea type="textarea" class="form-control" rows="6">{{filma.deskribapena}}</textarea><br>
+			<input type="button" (click)="deleteFilma(filma._id)" value="Ezabatu" class="btn btn-danger">
+			<input type="button" (click)="updateFilma(filma, $event.target.parentNode.querySelector('input[type=text]').value, $event.target.parentNode.querySelector('textarea[type=textarea]').value)" value="Aldaketak gorde" class="btn btn-success">
 	</div><br>
 </div>

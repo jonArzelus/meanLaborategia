@@ -24,8 +24,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 //URL
 app.use('/', index);
-app.use('/', filmak);
-app.use('/', erabiltzaileak);
+app.use('/api', filmak);
+app.use('/api', erabiltzaileak);
 
 app.listen(port, function(){
 	console.log('zerbitzaria abiarazita '+port+' portuan...');
