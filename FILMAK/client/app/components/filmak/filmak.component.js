@@ -87,6 +87,8 @@ var FilmakComponent = (function () {
             console.log(filma.izena + " eguneratzen...");
             var newFilma = {
                 _id: filma._id,
+                izena: filma.izena,
+                deskribapena: filma.deskribapena,
                 gogokoak: filma.gogokoak,
                 bozkak: filma.bozkak
             };

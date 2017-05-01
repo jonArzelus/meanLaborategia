@@ -13,7 +13,7 @@
 			<input class="form-control input-lg" type="text" value="{{filma.izena}}"><br>
 			<!--<textarea type="textarea" class="form-control" rows="6" (change)="updateFilmaDesk(filma, $event.target.value)">{{filma.deskribapena}}</textarea>-->
 			<textarea type="textarea" class="form-control" rows="6">{{filma.deskribapena}}</textarea><br>
-			<input type="button" (click)="deleteFilma(filma._id)" value="Ezabatu" class="btn btn-danger">
-			<input type="button" (click)="updateFilma(filma, $event.target.parentNode.querySelector('input[type=text]').value, $event.target.parentNode.querySelector('textarea[type=textarea]').value)" value="Aldaketak gorde" class="btn btn-success">
+			<button type="button" (click)="deleteFilma(filma._id)" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Ezabatu</button>
+			<button type="button" (click)="updateFilma(filma, $event.target.parentNode.querySelector('input[type=text]').value, $event.target.parentNode.querySelector('textarea[type=textarea]').value)" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span> Aldaketak gorde</button>
 	</div><br>
 </div>
