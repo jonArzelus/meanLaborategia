@@ -22,6 +22,6 @@ app.use('/js', express.static(__dirname + '/client/js'));
 app.get('/api/erabs', erabsController.list);
 app.post('/api/erabs', erabsController.create);
 
-app.listen(3000, function() {
+app.listen(3001, function() {
   console.log('Zerbitzaria prest...');
 })

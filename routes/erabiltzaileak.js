@@ -14,8 +14,8 @@ router.get('/erabiltzaileak', function(req, res, next){
 });
 
 //Erabiltzaile zehatz bat lortzeko (login)
-router.get('/erabiltzailea/:izena/:pass', function(req, res, next){
-	db.erabiltzaileak.findOne({izena: req.params.izena, pasahitza: req.params.pass}, function(err, erabiltzailea){
+router.get('/erabiltzailea/:posta/:pass', function(req, res, next){
+	db.erabiltzaileak.findOne({postaElektronikoa: req.params.posta, pasahitza: req.params.pass}, function(err, erabiltzailea){
 		if(err) {
 			res.send(err);
 		}

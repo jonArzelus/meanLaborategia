@@ -10,33 +10,25 @@ import {Erabiltzailea} from '../../../Erabiltzailea';
 
 export class ErabiltzaileakComponent {
 
-	erab: Erabiltzailea[]
+	erab: Erabiltzailea
 	izena: string;
+	postaElektronikoa: string
+	pasahitza: pasahitza
 	rol:string;
 
 	constructor(private erabiltzaileakService:ErabiltzaileakService) {
-		this.erabiltzaileakService.getErabiltzaileak()
+		/*this.erabiltzaileakService.getErabiltzaileak()
 		.subscribe(erab => {
 			this.erab=erab;
-		});
+		});*/
 	}
 
-	//TODO
-	addFilma(event) {
+	getErabiltzailea(event) {
 		event.preventDefault();
-		console.log(this.izena);
-		var newFilma = {
-			izena: this.izena,
-			deskribapena: this.deskribapena,
-			gogokoak: [],
-			bozkak: []
-		}
-
-		this.filmakService.addFilma(newFilma)
-		.subscribe(filma => {
-			this.filmak.push(filma);
-			this.izena='';
-			this.deskribapena = '';
+		console.log(this.posta+" erabiltzailea lortzen...");
+		this.erabiltzaileakService.getErabiltzailea(this.posta, this.pass)
+		.subscribe(erabiltzailea => {
+			this.erab = erabiltzailea;
 		});
 	}
 

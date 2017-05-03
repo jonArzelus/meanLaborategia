@@ -13,12 +13,11 @@ export class ErabiltzaileakService{
             .map(res => res.json());
     }
     
-    //TODO
-    addErabiltzailea(newFilma){
-        console.log(newFilma);
+    getErabiltzailea(posta, pass){
+        console.log(posta+", pass: "+pass);
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('/api/filma', JSON.stringify(newFilma), {headers: headers})
+        return this.http.get('/api/erabiltzailea/'+posta+'/'+pass, JSON.stringify(newFilma), {headers: headers})
             .map(res => res.json());
     }
     
