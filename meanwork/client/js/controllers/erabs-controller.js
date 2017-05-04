@@ -31,12 +31,12 @@ app.controller('erabsController', ['$scope', '$resource', '$http', function ($sc
   //$scope.erabiltzailea="jon";
   $scope.templateURL="notlogged";
 
-  $scope.filmak =[]
+  /*$scope.filmak =[]
   $scope.erabiltzaileak=[]
   $scope.erabiltzaileak.push("{izena:'Mikel',abizena:'Ocejo' posta:'mocejo@gmail.com', pasahitza:'123456'}");
   $scope.filmak.push("{izena:'Fast &amp; Furious 8',urtea:'2017' sinopsia:'When a mysterious woman seduces Dom into the world of terrorism and a betrayal of those closest to him, the crew face trials that will test them as never before.'}");
   $scope.filmak.push("{izena:' El bebé jefazo',urtea:'2017' sinopsia:'A suit-wearing briefcase-carrying baby pairs up with his seven-year old brother to stop the dastardly plot of the CEO of Puppy Co. '}");
-  $scope.izenaPatroia="/^[a-zA-Z]*$/"
+  */$scope.izenaPatroia="/^[a-zA-Z]*$/"
   $scope.postaPatroia="/^[a-z0-9._%+-]+@[a-z0-9.-]+\\\.[a-z]{2,4}$/"
   $scope.pasahitzPatroia="/^(?=.*\\\d).{4,8}$/"
   $scope.filmakGehituAktibatua=false
